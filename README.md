@@ -1,2 +1,2 @@
-# tech-study
-新技术资料汇总
+﻿# tech-study
+核心、新技术重要资料汇总
