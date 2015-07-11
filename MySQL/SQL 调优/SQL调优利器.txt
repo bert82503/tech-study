@@ -1,0 +1,50 @@
+﻿1. 获取“表结构信息”
+
+{DESCRIBE | DESC}
+    tbl_name [col_name | wild]
+
+SHOW [FULL] COLUMNS {FROM | IN} tbl_name [{FROM | IN} db_name]
+    [LIKE 'pattern' | WHERE expr]
+
+示例：
+
+DESC tbl_name
+
+SHOW COLUMNS FROM tbl_name IN db_name
+
+
+2. 获取“表的索引信息”
+
+SHOW {INDEX | INDEXES | KEYS}
+    {FROM | IN} tbl_name
+    [{FROM | IN} db_name]
+    [WHERE expr]
+
+示例：
+
+SHOW INDEX FROM tbl_name IN db_name
+
+
+3. 获取“执行计划信息”
+
+{EXPLAIN | DESCRIBE | DESC}
+    [explain_type]
+    explainable_stmt
+
+示例：
+
+EXPLAIN SELECT tt.TicketNumber, tt.TimeIn,
+        tt.ProjectReference, tt.EstimatedShipDate,
+        tt.ActualShipDate, tt.ClientID,
+        tt.ServiceCodes, tt.RepetitiveID,
+        tt.CurrentProcess, tt.CurrentDPPerson,
+        tt.RecordVolume, tt.DPPrinted, et.COUNTRY,
+        et_1.COUNTRY, do.CUSTNAME
+    FROM tt, et, et AS et_1, do
+    WHERE tt.SubmitTime IS NULL
+        AND tt.ActualPC = et.EMPLOYID
+        AND tt.AssignedPC = et_1.EMPLOYID
+        AND tt.ClientID = do.CUSTNMBR;
+
+
+完整的示例可查阅《MySQL参考手册》的“8.8.2 EXPLAIN Output Format - EXPLAIN输出格式”小节的“Output Interpretation - 输出解读”的内容
