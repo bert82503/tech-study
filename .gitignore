@@ -1,0 +1,19 @@
+# gitignore Documentation - http://git-scm.com/docs/gitignore
+
+# Gradle
+.gradle/
+
+# Maven
+target/
+
+# TestNG
+test-output/
+
+# IDEA
+.idea/
+*.iml
+
+# Eclipse
+.settings/
+.classpath
+.project
