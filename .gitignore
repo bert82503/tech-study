@@ -17,3 +17,6 @@ test-output/
 .settings/
 .classpath
 .project
+
+#Mac
+.DS_Store
