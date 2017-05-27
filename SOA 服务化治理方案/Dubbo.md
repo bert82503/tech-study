@@ -1,8 +1,5 @@
 
-Dubbo是一个分布式服务框架，  
-致力于提供高性能和透明化的RPC远程服务调用方案，  
-是阿里巴巴SOA服务化治理方案的核心框架。
-
+Dubbo是一个分布式服务框架，致力于提供高性能和透明化的RPC远程服务调用方案，是阿里巴巴SOA服务化治理方案的核心框架。  
 每天为2,000+个服务提供3,000,000,000+次访问量支持，并被广泛应用于阿里巴巴集团的各成员站点。
 
 ### 入门
@@ -16,7 +13,21 @@ Dubbo是一个分布式服务框架，
 telnet localhost 20880
 ```
 
-help：显示telnet命帮助信息  
+包含如下这些命令：
+* ls
+* ps
+* cd
+* pwd
+* trace
+* count
+* invoke
+* status
+* log
+* help
+* clear
+* exit
+
+help：显示telnet命令的帮助信息  
 help xxx：显示xxx命令的详细帮助信息
 ```
 dubbo>help
@@ -45,7 +56,7 @@ dubbo>status -l
 | datasource | OK     | crtDataSourcejdbc:mysql://xxx.xxx.xxx.xxx:3306/wac_crt?useUnicode=true&useOldAliasMetadataBehavior=true&zeroDateTimeBehavior=convertToNull&characterEncoding=utf-8(MySQL-5.6.24-72.2-log) |
 | load       | OK     | load:0.11,cpu:4                                        |
 | memory     | OK     | max:1973M,total:1973M,used:474M,free:1499M             |
-| server     | OK     | /10.1.13.84:20880(clients:3)                           |
+| server     | OK     | /xxx.xxx.xxx.xxx:20880(clients:3)                           |
 | registry   | OK     | zkserver1.xxx.info:12181(connected)                  |
 | spring     | OK     |                                                        |
 | summary    | OK     |                                                        |
