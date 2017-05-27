@@ -13,20 +13,6 @@ Dubbo是一个分布式服务框架，致力于提供高性能和透明化的RPC
 telnet localhost 20880
 ```
 
-包括如下这些命令：
-* ls
-* ps
-* cd
-* pwd
-* trace
-* count
-* invoke
-* status
-* log
-* help
-* clear
-* exit
-
 help：显示telnet命令的帮助信息  
 help xxx：显示xxx命令的详细帮助信息
 ```
