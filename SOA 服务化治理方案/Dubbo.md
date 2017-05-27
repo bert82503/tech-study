@@ -16,7 +16,8 @@ telnet localhost 20880
 help：显示telnet命令的帮助信息  
 help xxx：显示xxx命令的详细帮助信息
 ```
-dubbo>help
+help
+
 Please input "help [command]" show detail.
  status [-l]                      - Show status. 显示状态列表
  pwd                              - Print working default service. 显示当前缺省服务
@@ -36,13 +37,13 @@ ls：显示服务列表
 ls -l：显示服务详细信息列表  
 ls -l XxxService：显示服务的方法详细信息列表
 ```
-dubbo>ls
+ls
 com.xxx.service.OcxMailTaskService
 
-dubbo>ls -l
+ls -l
 com.xxx.service.OcxMailTaskService -> dubbo://xxx.xxx.xxx.xxx:20880/com.xxx.service.OcxMailTaskService?accepts=1000&anyhost=true&application=ocx-provider&architecture=open-api&callback.connections=200&callback.timeout=300&default.accesslog=true&default.cluster=failover&default.delay=-1&default.group=product&default.layer=api&default.loadbalance=leastactive&default.retries=1&default.timeout=1000&dubbo=2.5.3&environment=develop&getTaskStatus.connections=300&getTaskStatus.retries=1&getTaskStatus.timeout=3000&interface=com.xxx.service.OcxMailTaskService&logger=slf4j&methods=submit,getTaskStatus,callback&organization=Credit-Division&owner=dannong&pid=6656&retries=0&revision=1.0.2&side=provider&threadpool=cached&threads=500&timeout=1000&timestamp=1494833677585
 
-dubbo>ls -l com.xxx.service.OcxMailTaskService
+ls -l com.xxx.service.OcxMailTaskService
 com.xxx.bean.OcxTaskStatusDTO getTaskStatus(java.lang.String)
 int callback(com.xxx.mail.ForceTaskStatusParam)
 com.xxx.mail.OcxMailTaskResponse submit(com.xxx.mail.OcxMailTaskParam)
@@ -56,7 +57,7 @@ cd XxxService：改变缺省服务，当设置了缺省服务，凡是需要输�
 trace XxxService 10：跟踪10次服务任意方法的调用情况  
 trace XxxService xxxMethod 10：跟踪10次服务方法的调用情况
 ```
-dubbo>trace com.xxx.service.OcxMailTaskService 10
+trace com.xxx.service.OcxMailTaskService 10
 
 /xxx.xxx.xxx.xxx:18634 -> com.xxx.service.OcxMailTaskService.getTaskStatus(["da177fa347cc3098b5293fc4d888fd39"]) -> {"result":"{\"msg\":\"success\",\"status\":200,\"taskStatus\":{\"2017052621185dd6be3c3b4b0040f8719eb8fcb32725ph2\":{\"action\":\"getInitAction\",\"clientTaskResponse\":{\"taskData\":\"\",\"taskType\":\"None\"},\"details\":{},\"progress\":\"10\",\"stage\":\"import_bill\",\"statistics\":{\"failNum\":\"0\",\"totalNum\":\"0\",\"successNum\":\"0\"},\"status\":\"FAILURE\",\"tid\":\"2017052621185dd6be3c3b4b0040f8719eb8fcb32725ph2\"}}}","ocxTaskId":"da177fa347cc3098b5293fc4d888fd39","referenceId":"2017052621185dd6be3c3b4b0040f8719eb8fcb32725ph2","ocxTaskState":"NEW"}
 elapsed: 8 ms.
@@ -65,8 +66,8 @@ elapsed: 8 ms.
 count XxxService 10：统计10次服务任意方法的调用情况  
 count XxxService xxxMethod 10：统计10次服务方法的调用情况
 ```
-dubbo>count com.xxx.service.OcxMailTaskService 10
-dubbo>
+count com.xxx.service.OcxMailTaskService 10
+
 +---------------+-------+--------+--------+---------+-----+
 | method        | total | failed | active | average | max |
 +---------------+-------+--------+--------+---------+-----+
@@ -79,17 +80,17 @@ dubbo>
 invoke XxxService.xxxMethod({"prop": "value"})：调用服务的方法  
 invoke xxxMethod({"prop": "value"})：调用服务的方法(自动查找包含此方法的服务)
 ```
-dubbo>invoke com.xxx.service.OcxMailTaskService.getTaskStatus("dbe0a435e53e6e77e59302c41288ab7b")
+invoke com.xxx.service.OcxMailTaskService.getTaskStatus("dbe0a435e53e6e77e59302c41288ab7b")
 Use default service com.xxx.service.OcxMailTaskService.
 {"result":"{\"msg\":\"success\",\"status\":200,\"taskStatus\":{\"2017052621103fe3d48d5d2dbdd818ecdf7b3e65e711ph2\":{\"action\":\"persistenceAction\",\"clientTaskResponse\":{\"taskData\":\"\",\"taskType\":\"None\"},\"details\":{},\"failureType\":\"None\",\"progress\":\"100\",\"stage\":\"finish\",\"statistics\":{\"failNum\":\"0\",\"totalNum\":\"27\",\"successNum\":\"27\"},\"status\":\"SUCCESS\",\"tid\":\"2017052621103fe3d48d5d2dbdd818ecdf7b3e65e711ph2\"}}}","ocxTaskId":"dbe0a435e53e6e77e59302c41288ab7b","referenceId":"2017052621103fe3d48d5d2dbdd818ecdf7b3e65e711ph2","ocxTaskState":"NEW"}
 elapsed: 8 ms.
 
-dubbo>invoke getTaskStatus("dbe0a435e53e6e77e59302c41288ab7b")
+invoke getTaskStatus("dbe0a435e53e6e77e59302c41288ab7b")
 ```
 
 status -l：显示状态列表
 ```
-dubbo>status -l
+status -l
 +------------+--------+--------------------------------------------------------+
 | resource   | status | message                                                |
 +------------+--------+--------------------------------------------------------+
