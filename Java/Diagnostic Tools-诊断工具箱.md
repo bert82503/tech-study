@@ -95,44 +95,133 @@ jps -lmv
 ##### [重要命令](https://github.com/oldmanpushcart/greys-anatomy/wiki/greys-pdf#greys%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3)
 help：查看命令的帮助文档，每个命令和参数都有很详细的说明
 ```
-help
+ga?>help
 +----------+----------------------------------------------------------------------------------+
-|       sc | Search all the classes loaded by JVM                                             |
+|     help | Display Greys Help (查看命令的帮助文档，每个命令和参数都有很详细的说明，还有示例)       |
 +----------+----------------------------------------------------------------------------------+
-|       sm | Search the method of classes loaded by JVM                                       |
+|  monitor | Monitor the execution of specified Class and its method (方法执行监控)            |
 +----------+----------------------------------------------------------------------------------+
-|  monitor | Monitor the execution of specified Class and its method (方法执行监控)             |
+|    trace | Display the detailed thread stack of specified class and method (渲染方法内部调用路径，并输出方法路径上的每个节点上耗时，但) |
 +----------+----------------------------------------------------------------------------------+
-|    watch | Display the details of specified class and method (方法执行数据观测)                |
+|   ptrace | Display the detailed thread path stack of specified class and method (强化版的trace命令。通过指定渲染路径，并可记录路径中所有方法的入参、返回值；与tt命令联动；渲染和统计整个调用链路上的所有性能开销和追踪调用链路。) |
++----------+----------------------------------------------------------------------------------+
+|    watch | Display the details of specified class and method (方法执行数据观测)               |
 +----------+----------------------------------------------------------------------------------+
 |       tt | Time Tunnel (方法执行数据的时间隧道，记录下指定方法每次调用的入参和返回信息，并能对这些不同的时间下调用进行观测) |
 +----------+----------------------------------------------------------------------------------+
-|    stack | Display the stack trace of specified class and method (输出当前方法被调用的调用路径)  |
+|    stack | Display the stack trace of specified class and method (输出当前方法被调用的调用路径)|
 +----------+----------------------------------------------------------------------------------+
-|   ptrace | Display the detailed thread path stack of specified class and method (强化版的trace命令。通过指定渲染路径，并可记录路径中所有方法的入参、返回值；与tt命令联动) |
+|      top | Display The Threads Of Top CPU TIME (显示最耗CPU的Top N个线程)                     |
++----------+----------------------------------------------------------------------------------+
+|       sc | Search all the classes loaded by JVM (查看JVM已加载的类信息)                       |
++----------+----------------------------------------------------------------------------------+
+|       sm | Search the method of classes loaded by JVM (查看已加载的方法信息)                  |
++----------+----------------------------------------------------------------------------------+
+|      asm | Display class bytecode by asm format (以ASM格式显示类的字节码)                     |
++----------+----------------------------------------------------------------------------------+
+|      jvm | Display the target JVM information (查看当前JVM的信息)                             |
++----------+----------------------------------------------------------------------------------+
+|    reset | Reset all the enhanced classes (重置增强类，将被Greys增强过的类全部还原)             |
++----------+----------------------------------------------------------------------------------+
+| shutdown | Shut down Greys server and exit the console (关闭greys服务端)                     |
++----------+----------------------------------------------------------------------------------+
+|     quit | Quit Greys console (退出Greys客户端)                                              |
 +----------+----------------------------------------------------------------------------------+
 |       js | Enhanced JavaScript                                                              |
 +----------+----------------------------------------------------------------------------------+
-|    trace | Display the detailed thread stack of specified class and method (渲染方法内部调用路径，并输出方法路径上的每个节点上耗时) |
-+----------+----------------------------------------------------------------------------------+
 |  session | Display current session information                                              |
-+----------+----------------------------------------------------------------------------------+
-|     quit | Quit Greys console (退出Greys客户端)                                               |
 +----------+----------------------------------------------------------------------------------+
 |  version | Display Greys version                                                            |
 +----------+----------------------------------------------------------------------------------+
-|      jvm | Display the target JVM information (查看当前JVM的信息)                              |
-+----------+----------------------------------------------------------------------------------+
-|    reset | Reset all the enhanced classes (重置增强类，将被Greys增强过的类全部还原)                |
-+----------+----------------------------------------------------------------------------------+
-|      asm | Display class bytecode by asm format (以ASM格式显示类的字节码)                       |
-+----------+----------------------------------------------------------------------------------+
-| shutdown | Shut down Greys server and exit the console                                      |
-+----------+----------------------------------------------------------------------------------+
-|     help | Display Greys Help (显示命令的帮助文档，每个命令和参数都有很详细的说明)                    |
-+----------+----------------------------------------------------------------------------------+
-|      top | Display The Threads Of Top CPU TIME (显示最耗CPU的Top N个线程)                      |
-+----------+----------------------------------------------------------------------------------+
+
+ga?>help trace
++---------+----------------------------------------------------------------------------------+
+|   USAGE | -[En:] class-pattern method-pattern condition-express                            |
+|         | Display the detailed thread stack of specified class and method                  |
++---------+----------------------------------------------------------------------------------+
+| OPTIONS |              [E] | Enable regular expression to match (wildcard matching by def  |
+|         |                  | ault)                                                         |
+|         | -----------------+-------------------------------------------------------------- |
+|         |             [n:] | Threshold of execution times                                  |
+|         | -----------------+-------------------------------------------------------------- |
+|         |    class-pattern | Path and classname of Pattern Matching                        |
+|         | -----------------+-------------------------------------------------------------- |
+|         |   method-pattern | Method of Pattern Matching                                    |
+|         | -----------------+-------------------------------------------------------------- |
+|         |  condition-expre | Conditional expression by OGNL                                |
+|         |               ss |                                                               |
+|         |                  | FOR EXAMPLE                                                   |
+|         |                  |      TRUE : 1==1                                              |
+|         |                  |      TRUE : true                                              |
+|         |                  |     FALSE : false                                             |
+|         |                  |      TRUE : params.length>=0                                  |
+|         |                  |     FALSE : 1==2                                              |
+|         |                  |                                                               |
+|         |                  | THE STRUCTURE                                                 |
+|         |                  |           target : the object                                 |
+|         |                  |            clazz : the object's class                         |
+|         |                  |           method : the constructor or method                  |
+|         |                  |     params[0..n] : the parameters of method                   |
+|         |                  |        returnObj : the returned object of method              |
+|         |                  |         throwExp : the throw exception of method              |
+|         |                  |         isReturn : the method ended by return                 |
+|         |                  |          isThrow : the method ended by throwing exception     |
++---------+----------------------------------------------------------------------------------+
+| EXAMPLE | trace -E org\.apache\.commons\.lang\.StringUtils isBlank                         |
+|         | trace org.apache.commons.lang.StringUtils isBlank                                |
+|         | trace *StringUtils isBlank                                                       |
+|         | trace *StringUtils isBlank params[0].length==1                                   |
+|         | trace *StringUtils isBlank '#cost>100'                                           |
+|         | trace -n 2 *StringUtils isBlank                                                  |
++---------+----------------------------------------------------------------------------------+
+
+ga?>help ptrace
++---------+----------------------------------------------------------------------------------+
+|   USAGE | -[tEn:] --[path:Epath:] class-pattern method-pattern condition-express           |
+|         | Display the detailed thread path stack of specified class and method             |
++---------+----------------------------------------------------------------------------------+
+| OPTIONS |              [t] | Record the method invocation within time fragments            |
+|         | -----------------+-------------------------------------------------------------- |
+|         |          [path:] | path-tracing-pattern                                          |
+|         | -----------------+-------------------------------------------------------------- |
+|         |         [Epath:] | path-tracing-regex-pattern                                    |
+|         | -----------------+-------------------------------------------------------------- |
+|         |              [E] | Enable regular expression to match (wildcard matching by def  |
+|         |                  | ault)                                                         |
+|         | -----------------+-------------------------------------------------------------- |
+|         |             [n:] | Threshold of execution times                                  |
+|         | -----------------+-------------------------------------------------------------- |
+|         |    class-pattern | Path and classname of Pattern Matching                        |
+|         | -----------------+-------------------------------------------------------------- |
+|         |   method-pattern | Method of Pattern Matching                                    |
+|         | -----------------+-------------------------------------------------------------- |
+|         |  condition-expre | Conditional expression by OGNL                                |
+|         |               ss |                                                               |
+|         |                  | FOR EXAMPLE                                                   |
+|         |                  |      TRUE : 1==1                                              |
+|         |                  |      TRUE : true                                              |
+|         |                  |     FALSE : false                                             |
+|         |                  |      TRUE : params.length>=0                                  |
+|         |                  |     FALSE : 1==2                                              |
+|         |                  |                                                               |
+|         |                  | THE STRUCTURE                                                 |
+|         |                  |           target : the object                                 |
+|         |                  |            clazz : the object's class                         |
+|         |                  |           method : the constructor or method                  |
+|         |                  |     params[0..n] : the parameters of method                   |
+|         |                  |        returnObj : the returned object of method              |
+|         |                  |         throwExp : the throw exception of method              |
+|         |                  |         isReturn : the method ended by return                 |
+|         |                  |          isThrow : the method ended by throwing exception     |
++---------+----------------------------------------------------------------------------------+
+| EXAMPLE | ptrace -E org\.apache\.commons\.lang\.StringUtils isBlank org\.apache\.commons\. |
+|         | lang\..*                                                                         |
+|         | ptrace -E .*\.StringUtils isBlank org\.apache\.commons\.(lang|lang3)\..*         |
+|         | ptrace org.apache.commons.lang.StringUtils isBlank org.apache.commons.lang.*     |
+|         | ptrace *StringUtils isBlank org.apache.commons.lang.*                            |
+|         | ptrace *StringUtils isBlank org.apache.commons.lang.* 'params[0].length==1'      |
+|         | ptrace *StringUtils isBlank org.apache.commons.lang.* '#cost>100'                |
++---------+----------------------------------------------------------------------------------+
 ```
 
 monitor：对方法的调用进行监控
@@ -140,6 +229,7 @@ monitor：对方法的调用进行监控
 # [c:]：统计周期
 monitor -c 5 *OcxMailTaskService getTaskStatus
 Press Ctrl+D to abort.
+Affect(class-cnt:1 , method-cnt:101) cost in 136 ms.
 
 +---------------------+---------------------------------------------------------------+---------------+-------+---------+------+-----------+------------+------------+------------+
 | TIMESTAMP           | CLASS                                                         | METHOD        | TOTAL | SUCCESS | FAIL | FAIL-RATE | AVG-RT(ms) | MIN-RT(ms) | MAX-RT(ms) |
@@ -148,7 +238,7 @@ Press Ctrl+D to abort.
 +---------------------+---------------------------------------------------------------+---------------+-------+---------+------+-----------+------------+------------+------------+
 ```
 
-trace：渲染和统计整个调用链路上的所有性能开销和追踪调用链路
+trace：渲染和统计整个调用链路上的所有性能开销和追踪`调用链路`
 ```
 # [n:]：命令执行次数
 trace -n 3 *OcxMailTaskService getTaskStatus '#cost>10'
@@ -183,10 +273,47 @@ trace -n 3 *ForceHttpClient taskStatus
         +---[11,10ms]com.xxx.http.HttpClientUtil:doGet(@137)
         `---[11,0ms]org.slf4j.Logger:debug(@138)
 ```
-注意：`trace`能方便地帮助你定位和发现因`RT高`而导致的性能问题缺陷，但其每次只能跟踪一级方法的调用链路，目前暂时没有精力去解决往下几个层级的调用。
+注意：`trace`能方便地帮助你定位和发现因`RT高`而导致的性能问题缺陷，但其`每次只能跟踪一级方法的调用链路`，目前暂时没有精力去解决往下几个层级的调用。
 
-ptrace：trace命令的强化版，通过指定渲染路径来完成对方法执行路径的渲染过程
+ptrace：trace命令的强化版，通过指定渲染路径来完成对`方法执行路径`的渲染过程。
+它能主动搜索tracing-path-pattern所渲染的路径，渲染和`统计整个调用链路上的所有性能开销和追踪调用链路`。
 ```
+# 统计整个调用链路上的所有性能开销和追踪调用链路
+#ptrace -t *alibaba*Test printAddress --path=*alibaba*
+ptrace *DefaultChannelPipeline invokeHandlerAddedIfNeeded
+
+`---+pTracing for : thread_name="nioEventLoopGroup-3-4" thread_id=0xe;is_daemon=false;priority=10;process=1001;
+    `---+[4,2ms]io.netty.channel.DefaultChannelPipeline:invokeHandlerAddedIfNeeded()
+        `---+[4,2ms]io.netty.channel.DefaultChannelPipeline:callHandlerAddedForAllHandlers()
+            +---[3,0ms]io.netty.channel.DefaultChannelPipeline:channel()
+            `---+[4,1ms]io.netty.channel.DefaultChannelPipeline:access$000()
+                `---+[4,1ms]io.netty.channel.DefaultChannelPipeline:callHandlerAdded0()
+                    +---[3,0ms]io.netty.channel.DefaultChannelPipeline:channel()
+                    +---[3,0ms]io.netty.channel.DefaultChannelPipeline:channel()
+                    +---+[3,0ms]io.netty.channel.DefaultChannelPipeline:addLast()
+                    |   `---+[3,0ms]io.netty.channel.DefaultChannelPipeline:addLast()
+                    |       `---+[3,0ms]io.netty.channel.DefaultChannelPipeline:addLast()
+                    |           +---[3,0ms]io.netty.channel.DefaultChannelPipeline:checkMultiplicity()
+                    |           +---+[3,0ms]io.netty.channel.DefaultChannelPipeline:filterName()
+                    |           |   `---+[3,0ms]io.netty.channel.DefaultChannelPipeline:generateName()
+                    |           |       +---[3,0ms]io.netty.channel.DefaultChannelPipeline:generateName0()
+                    |           |       `---[3,0ms]io.netty.channel.DefaultChannelPipeline:context0()
+                    |           +---+[3,0ms]io.netty.channel.DefaultChannelPipeline:newContext()
+                    |           |   `---[3,0ms]io.netty.channel.DefaultChannelPipeline:childExecutor()
+                    |           +---[3,0ms]io.netty.channel.DefaultChannelPipeline:addLast0()
+                    |           +---[3,0ms]io.netty.channel.DefaultChannelPipeline:channel()
+                    |           `---[3,0ms]io.netty.channel.DefaultChannelPipeline:callHandlerAdded0()
+                    +---[3,0ms]io.netty.channel.DefaultChannelPipeline:context()
+                    `---+[4,1ms]io.netty.channel.DefaultChannelPipeline:remove()
+                        +---+[3,0ms]io.netty.channel.DefaultChannelPipeline:getContextOrDie()
+                        |   `---[3,0ms]io.netty.channel.DefaultChannelPipeline:context()
+                        `---+[4,1ms]io.netty.channel.DefaultChannelPipeline:remove()
+                            +---[4,0ms]io.netty.channel.DefaultChannelPipeline:remove0()
+                            +---[4,0ms]io.netty.channel.DefaultChannelPipeline:channel()
+                            `---[4,0ms]io.netty.channel.DefaultChannelPipeline:callHandlerRemoved0()
+
+`---+pTracing for : thread_name="nioEventLoopGroup-3-4" thread_id=0xe;is_daemon=false;priority=10;process=1002;
+    `---[0,0ms]io.netty.channel.DefaultChannelPipeline:invokeHandlerAddedIfNeeded()
 ```
 
 watch：方便地观察到指定方法的调用情况（入参、返回值、抛出异常）
