@@ -49,15 +49,15 @@ Dubbo 国内⽤户⼀览
 * 请在 [Wanted: who's using dubbo](https://github.com/apache/incubator-dubbo/issues/1012) 上提供您的信息
 * Dubbo Meetup
 
-**不单单使⽤，⽽要参与**
+不单单使⽤，⽽要**参与**
 
 ![Dubbo 开源现状 - 使⽤参与](images/08.Dubbo开源现状-使用参与.png)
 
-* 重建⽂档和主⻚（http://dubbo.io 快速开始、产品⽂档、代码、社区等内容。⽂档以 GitBook 形式发布）
+* 重建⽂档和主⻚（[dubbo.io](http://dubbo.io) 快速开始、产品⽂档、代码、社区等内容。⽂档以 GitBook 形式发布）
 * 三⽅库升级
 * 发版节奏（确⽴了特性版本 2.6.x 和维护版本 2.5.x 并⾏的策略，确保每⽉⼀个版本的节奏）
 * **倾听⽤户声⾳**（**优先⽀持社区[用户]呼声最⾼的诉求**：REST ⽀持、Spring Boot ⽀持、Hessian、Java 8 ⽀持）
-* 进⼊ Apache（**打消对 Dubbo 开源未来的顾虑**，将项⽬捐献给 Apache 基⾦会。Apache 强调社区和多样性）
+* **进⼊ Apache**（**打消对 Dubbo 开源未来的顾虑**，将项⽬捐献给 Apache 基⾦会。**Apache 强调社区和多样性**）
 
 
 ### 后续规划
@@ -98,24 +98,24 @@ Dubbo 国内⽤户⼀览
 ![Dubbo 生态 — 互通](images/12.Dubbo后续规划-Dubbo⽣态-互通.png)
 
 * Java Client、HTTP Client、Node Client、Python Client
-* Gateway/Sidecar
-* Dubbo Service (Service Discovery、Config Service、Metrics/Trace、Auth Service)
+* **Gateway/Sidecar**
+* **Dubbo Service** (**Service Discovery、Config Service、Metrics/Trace、Auth Service**)
 * Mock Server、Test Server、Swagger Server、Dubbo Admin
 
 ##### 云原⽣ - Dubbo Mesh
 ![云原⽣ - Dubbo Mesh](images/13.Dubbo后续规划-云原⽣-Dubbo-Mesh.png)
 
-* 服务治理能⼒下沉
+* **服务治理能⼒下沉**
   * **未来的趋势是服务治理能⼒下移成为平台的基础能⼒，应⽤⽆需与特定语⾔的技术栈绑定**。Dubbo Mesh 成为数据⾯板
-* 多语⾔⽀持
+* **多语⾔⽀持**
   * **编程语⾔的多样性是云上场景的强诉求。通过将服务治理能⼒ sidecar 化，⽀持多种语⾔的 RPC 成为可能**，
   这也是 **Spring Cloud ⽅案最⼤的短板**
 
 核心组件
 * Dubbo RPC
-* Dubbo Mesh (Register、Config、Cluster、Load Balance、Router、Protocol)
+* **Dubbo Mesh** (Register、Config、Cluster、Load Balance、Router、Protocol)
 * Dubbo RPC 之间的通信基于 Dubbo Mesh
-* 全局基础能⼒：Service Discovery、Config Service、Trace Server
+* **全局基础能⼒：Service Discovery、Config Service、Trace Server**
 
 
 ### Apache 孵化
