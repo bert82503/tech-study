@@ -19,7 +19,7 @@
 
 
 ## 社区
-1. [Service Mesher](http://www.servicemesher.com/)
+1. [Service Mesher 爱好者社区](http://www.servicemesher.com/)
 
 
 ## 平台
