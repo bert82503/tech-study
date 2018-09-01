@@ -1,10 +1,10 @@
 
 
-![](images/icon-spring-boot.svg) Spring Boot
+![](img/icon-spring-boot.svg) Spring Boot
 ============================================
 
 
-### Build Anything With Spring Boot/用Spring Boot构建任何东西
+### Build Anything with Spring Boot/用Spring Boot构建任何东西
 Spring Boot is the starting point for building all Spring-based applications.
 Spring Boot is designed to get you up and running as quickly as possible, with minimal upfront configuration of Spring.
 Spring Boot是构建所有基于Spring的应用的起点。
