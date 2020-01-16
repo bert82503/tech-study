@@ -34,6 +34,8 @@ JDK Release Notes
 
 ## JDK 9 Release Notes
 > [JDK 9 Release Notes](https://www.oracle.com/technetwork/java/javase/9u-relnotes-3704429.html)
+>
+> 非LTS/长期支持版本
 
 ### JDK 9
 > [JDK 9](https://www.oracle.com/technetwork/java/javase/9-relnotes-3622618.html)
@@ -42,9 +44,41 @@ JDK Release Notes
 
 ## JDK 8 Release Notes
 > [JDK 8 Release Notes](https://www.oracle.com/technetwork/java/javase/8u-relnotes-2225394.html)
+> 
+> **LTS/长期支持版本**
 
 ### JDK 8 (GA)
 > [JDK 8 (GA)](https://www.oracle.com/technetwork/java/javase/8-relnotes-2226341.html)
+
+#### [What's New in JDK 8](https://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html)
+* Java Programming Language
+  * Lambda Expressions Lambda/闭包表达式
+  * Method references 方法引用
+  * Default methods 默认方法
+  * Repeating Annotations
+  * Type Annotations
+  * Improved type inference 类型推导
+  * Method parameter reflection.
+* Collections
+  * Stream API to support functional-style operations on streams of elements 支持函数式操作
+  * Performance Improvement for HashMaps with Key Collisions 散列表的键冲突的性能改进
+* Date-Time Package - provide a comprehensive date-time model.
+* IO and NIO
+  * New SelectorProvider implementation for Solaris
+  * Performance improvement for the java.lang.String(byte[], *) constructor and the java.lang.String.getBytes() method.
+* java.lang and java.util Packages
+  * Parallel Array Sorting
+  * Standard Encoding and Decoding Base64
+* Concurrency
+  * Classes and interfaces have been added to the java.util.concurrent package.
+  * Methods have been added to the java.util.concurrent.ConcurrentHashMap class to support aggregate operations based on the newly added streams facility and lambda expressions.
+  * Classes have been added to the java.util.concurrent.atomic package to support scalable updatable variables.
+  * Methods have been added to the java.util.concurrent.ForkJoinPool class to support a common pool.
+  * The java.util.concurrent.locks.StampedLock class has been added to provide a capability-based lock with three modes for controlling read/write access.
+* HotSpot
+  * Removal of PermGen.
+  * Default Methods in the Java Programming Language are supported by the byte code instructions for method invocation.
+* Java Mission Control 5.3 Release Notes
 
 
 
@@ -108,7 +142,7 @@ JDK Release Notes
   New APIs have been added to the `java.lang.ClassLoader` class to support 
   `parallel loading of classes` and finer-grained `locking mechanism for class loading operations`. 
   Custom class loaders which would like to leverage this functionality must 
-  refer to the [Class Loader API Modifications for Deadlock Fix](http://openjdk.java.net/groups/core-libs/ClassLoaderProposal.html) documentation 
+  refer to the [Class Loader API Modifications for Deadlock Fix](https://openjdk.java.net/groups/core-libs/ClassLoaderProposal.html) documentation 
   for the suggested model and requirements and be implemented accordingly.
 
 #### 3.Important RFEs Addressed in JDK 7
