@@ -11,7 +11,7 @@
 
 下面就是我的inode学习笔记，尽量保持简单。
 
-![理解inode](imgs/inode-bg.jpg)
+![理解inode](images/inode-bg.jpg)
 
 
 ## 一、inode是什么？
