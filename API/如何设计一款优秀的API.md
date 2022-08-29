@@ -3,6 +3,7 @@
 如何设计一款优秀的API
 ==================
 > Joshua Bloch，2014-02-18 (2006)
+> [原文](https://www.csdn.net/article/2014-02-18/2818441-How-to-design-a-good-API)
 
 随着近来软件规模的日益庞大，API编程接口的设计变的越来越重要。
 **良好的接口设计**可以**降低系统各部分之间的相互依赖，提高`组成单元的内聚性`，降低`组成单元间的耦合度`**，从而**提高系统的维护性和稳定性**。
@@ -372,7 +373,4 @@ API设计是一件非常高端大气上档次的工艺，对程序员、终端�
 **附上Joshua Bloch的PPT**：
 
 来自：[How to design a good API and why it matters](https://ai.google/research/pubs/pub32713/)
-
-
-[原文](https://www.csdn.net/article/2014-02-18/2818441-How-to-design-a-good-API)
 
