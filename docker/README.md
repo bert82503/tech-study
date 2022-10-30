@@ -23,16 +23,9 @@ Docker
 ## 权威资料
 * [Docker - Wikipedia]()
 * [Docker 官网](https://www.docker.com/)
-  * [What is a Container?](https://www.docker.com/resources/what-container/)
+  * [What is a Container? 什么是容器](https://www.docker.com/resources/what-container/)
     * Use containers to Build, Share and Run your applications
-    * Package Software into Standardized Units for Development, Shipment and Deployment
-    * 将软件打包到标准化单元中，以便进行开发、运输和部署
-    * Docker Containers Are Everywhere: Linux, Windows, Data center, Cloud, Serverless, etc.
-    * Docker容器无处不在：Linux，Windows，数据中心，云，无服务器等。
-    * Comparing Containers and Virtual Machines
-    * Containers and Virtual Machines Together
-    * Container Standards and Industry Leadership
-    * 容器标准和行业领导地位
+    * 使用容器构建、共享和运行应用程序
   * [Why Docker](https://www.docker.com/why-docker/)
     * Developers bring their ideas to life with Docker
     * 开发人员使用 Docker 将他们的想法变为现实
