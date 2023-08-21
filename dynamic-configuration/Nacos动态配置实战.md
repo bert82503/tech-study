@@ -18,6 +18,8 @@ an easy-to-use **dynamic** **service discovery, configuration and service manage
 
 ## 一、初始化数据库表
 MySQL
+
+[MySQL Community Server (Archived Versions)](https://downloads.mysql.com/archives/community/)
 ```shell
  ~ mysql -V
 mysql  Ver 8.0.33 for macos13 on arm64 (MySQL Community Server - GPL)
