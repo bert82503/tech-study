@@ -44,15 +44,12 @@ https://dev.mysql.com/doc/refman/8.0/en/grant.html
 CREATE USER 'username'@'host' IDENTIFIED BY 'password';
 # 创建用户
 CREATE USER 'nacos'@'localhost' IDENTIFIED BY 'nacos';
-CREATE USER 'ShenYu'@'localhost' IDENTIFIED BY 'ShenYu';
 
 # 授权
 GRANT ALL ON *.* TO 'nacos'@'localhost';
-GRANT ALL ON *.* TO 'ShenYu'@'localhost';
 
 # 删除用户
 DROP USER 'nacos'@'localhost';
-DROP USER 'ShenYu'@'localhost';
 
 ```
 
@@ -100,7 +97,7 @@ db.num=1
 # db.url.0=jdbc:mysql://127.0.0.1:3306/nacos?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useUnicode=true&useSSL=false&serverTimezone=UTC
 # db.user.0=nacos
 # db.password.0=nacos
-db.url.0=jdbc:mysql://127.0.0.1:3306/nacos?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useUnicode=true&useSSL=false&serverTimezone=UTC
+db.url.0=jdbc:mysql://127.0.0.1:3306/nacos?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useUnicode=true&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
 db.user.0=nacos
 db.password.0=nacos
 
